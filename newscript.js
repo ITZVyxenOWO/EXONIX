@@ -1,7 +1,7 @@
 // Supabase Integration Code Example with GitHub Secrets
 
 const { createClient } = supabase;
-const SUPABASE_URL = "https://your-supabase-url.supabase.co";
+const SUPABASE_URL = "https://gxomwxrhuuhnxknqthgm.supabase.co";
 const SUPABASE_KEY = process.env.SUPABASE_KEY; // Fetching from GitHub Secrets
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
