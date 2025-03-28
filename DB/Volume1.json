@@ -1,6 +1,9 @@
 {
     "mods": [],
-    "blogPosts": {},
+    "blogPosts": {
+        "title":"FUCK NEOCITIES",
+        "body" :"Switched to github pages"
+},
     "users": [],
     "adminAccounts": {
         "Zenith0xDEAD": "3dca0b1d266d7ca6b258f03392540537c6d79850605fae271a449d7bd658c3a8",
