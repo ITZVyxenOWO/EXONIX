@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exonix Mod Distribution Platform</title>
+    <link rel="stylesheet" href="newstyle.css">
+    <script defer src="newscript.js"></script>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <h1>Exonix</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-category="all">All</a></li>
+                <li><a href="#" data-category="injectors">Injectors</a></li>
+                <li class="dropdown">
+                    <a href="#" data-category="gtav">GTAV</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-subcategory="story-mode">Story Mode</a></li>
+                        <li><a href="#" data-subcategory="online">Online</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-category="scripts">Scripts</a></li>
+                <li><a href="#" data-category="menus">Menus</a></li>
+                <li><a href="#" id="admin-panel-link" data-category="admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Mod Cards Section -->
+        <section id="mods-container">
+            <h2>Mods</h2>
+            <!-- Mod cards will be dynamically inserted here -->
+        </section>
+
+        <!-- Admin Login -->
+        <section id="admin-login" class="hidden">
+            <h2>Admin Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="login-message" class="hidden"></p>
+        </section>
+
+        <!-- Control Centre (Admin Panel Hidden until login) -->
+        <section id="admin-panel" class="hidden">
+            <h2>Control Centre</h2>
+            
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="add-mod">Add Mod</button>
+                <button class="tab-button" data-tab="edit-mod">Edit Mod</button>
+                <button class="tab-button" data-tab="post-blog">Post Blog</button>
+                <button class="tab-button" data-tab="post-announcement">Post Announcement</button>
+            </div>
+
+            <!-- Tab Content -->
+
+            <!-- Add Mod Tab -->
+            <div class="tab-content active" id="add-mod">
+                <form id="add-mod-form">
+                    <h3>Add New Mod</h3>
+                    <label for="mod-name">Name:</label>
+                    <input type="text" id="mod-name" required>
+                    <label for="mod-description">Description:</label>
+                    <textarea id="mod-description" required></textarea>
+                    <label for="mod-category">Category:</label>
+                    <select id="mod-category">
+                        <option value="Injectors">Injectors</option>
+                        <option value="GTAV">GTAV</option>
+                        <option value="Scripts">Scripts</option>
+                        <option value="Menus">Menus</option>
+                    </select>
+                    <label for="mod-author-type">Author Type:</label>
+                    <select id="mod-author-type">
+                        <option value="Developer">Developer</option>
+                        <option value="Sourcer">Sourcer</option>
+                    </select>
+                    <label for="mod-author-name">Author Name:</label>
+                    <input type="text" id="mod-author-name" required>
+                    <label for="mod-status">Status:</label>
+                    <select id="mod-status">
+                        <option value="active">Active</option>
+                        <option value="coming-soon">Coming Soon</option>
+                        <option value="tbc">TBC</option>
+                    </select>
+                    <label for="mod-image">Image URL:</label>
+                    <input type="text" id="mod-image">
+                    <button type="submit">Add Mod</button>
+                </form>
+            </div>
+
+            <!-- Edit Mod Tab -->
+            <div class="tab-content hidden" id="edit-mod">
+                <h3>Edit Mod</h3>
+                <label for="mod-id-edit">Mod ID:</label>
+                <input type="text" id="mod-id-edit" required>
+                <button type="button" id="fetch-mod">Fetch Mod</button>
+                <form id="edit-mod-form" class="hidden">
+                    <label for="edit-mod-name">Name:</label>
+                    <input type="text" id="edit-mod-name" required>
+                    <label for="edit-mod-description">Description:</label>
+                    <textarea id="edit-mod-description" required></textarea>
+                    <label for="edit-mod-category">Category:</label>
+                    <select id="edit-mod-category">
+                        <option value="Injectors">Injectors</option>
+                        <option value="GTAV">GTAV</option>
+                        <option value="Scripts">Scripts</option>
+                        <option value="Menus">Menus</option>
+                    </select>
+                    <label for="edit-mod-author-type">Author Type:</label>
+                    <select id="edit-mod-author-type">
+                        <option value="Developer">Developer</option>
+                        <option value="Sourcer">Sourcer</option>
+                    </select>
+                    <label for="edit-mod-author-name">Author Name:</label>
+                    <input type="text" id="edit-mod-author-name" required>
+                    <label for="edit-mod-status">Status:</label>
+                    <select id="edit-mod-status">
+                        <option value="active">Active</option>
+                        <option value="coming-soon">Coming Soon</option>
+                        <option value="tbc">TBC</option>
+                    </select>
+                    <label for="edit-mod-image">Image URL:</label>
+                    <input type="text" id="edit-mod-image">
+                    <button type="submit">Edit Mod</button>
+                </form>
+            </div>
+
+            <!-- Post Blog Tab -->
+            <div class="tab-content hidden" id="post-blog">
+                <form id="post-blog-form">
+                    <h3>Post Blog</h3>
+                    <label for="blog-title">Title:</label>
+                    <input type="text" id="blog-title" required>
+                    <label for="blog-content">Content:</label>
+                    <textarea id="blog-content" required></textarea>
+                    <button type="submit">Post Blog</button>
+                </form>
+            </div>
+
+            <!-- Post Announcement Tab -->
+            <div class="tab-content hidden" id="post-announcement">
+                <form id="post-announcement-form">
+                    <h3>Post Announcement</h3>
+                    <label for="announcement-title">Title:</label>
+                    <input type="text" id="announcement-title" required>
+                    <label for="announcement-content">Content:</label>
+                    <textarea id="announcement-content" required></textarea>
+                    <button type="submit">Post Announcement</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Exonix Mod Distribution Platform</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exonix Mod Distribution Platform</title>
+    <link rel="stylesheet" href="newstyle.css">
+</head>
+<body>
+    <header>
+        <h1>Exonix</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-category="all">All</a></li>
+                <li><a href="#" data-category="injectors">Injectors</a></li>
+                <li class="dropdown">
+                    <a href="#" data-category="gtav">GTAV</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-subcategory="story-mode">Story Mode</a></li>
+                        <li><a href="#" data-subcategory="online">Online</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-category="scripts">Scripts</a></li>
+                <li><a href="#" data-category="menus">Menus</a></li>
+                <li><a href="#" id="admin-panel-link" data-category="admin">Admin Panel</a></li>
+            </ul>
+        </nav>
+        <div id="admin-info" class="hidden">
+            <img id="admin-pfp" src="default-pfp.png" alt="Admin PFP" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
+            <span id="admin-username">Admin</span>
+        </div>
+    </header>
+
+    <main style="display: flex;">
+        <section id="mods-container" style="flex: 3; padding-right: 20px;">
+            <h2>Mods</h2>
+            <div id="mods-list"></div> <!-- Added the mods list container -->
+        </section>
+        <section id="blog-container" style="flex: 1; padding-left: 20px;">
+            <h2>Blog Posts</h2>
+            <div id="blog-posts"></div>
+        </section>
+    </main>
+
+    <section id="admin-login" class="hidden">
+        <h2>Admin Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-message" class="hidden"></p>
+    </section>
+
+    <section id="admin-panel" class="hidden">
+        <h2>Control Centre</h2>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="add-mod">Add Mod</button>
+            <button class="tab-button" data-tab="edit-mod">Edit Mod</button>
+            <button class="tab-button" data-tab="post-blog">Post Blog</button>
+            <button class="tab-button" data-tab="user-management">User Management</button>
+        </div>
+        <div class="tab-content active" id="add-mod">
+            <form id="add-mod-form">
+                <h3>Add New Mod</h3>
+                <label for="mod-name">Name:</label>
+                <input type="text" id="mod-name" required>
+                <label for="mod-description">Description:</label>
+                <textarea id="mod-description" required></textarea>
+                <label for="mod-category">Category:</label>
+                <select id="mod-category">
+                    <option value="Injectors">Injectors</option>
+                    <option value="GTAV">GTAV</option>
+                    <option value="Scripts">Scripts</option>
+                    <option value="Menus">Menus</option>
+                </select>
+                <label for="mod-author-name">Author Name:</label>
+                <input type="text" id="mod-author-name" required>
+                <button type="submit">Add Mod</button>
+            </form>
+        </div>
+        <div class="tab-content" id="edit-mod">
+            <form id="edit-mod-form">
+                <h3>Edit Mod</h3>
+                <label for="mod-id">Mod ID:</label>
+                <input type="text" id="mod-id" required>
+                <label for="mod-name-edit">Name:</label>
+                <input type="text" id="mod-name-edit" required>
+                <label for="mod-description-edit">Description:</label>
+                <textarea id="mod-description-edit" required></textarea>
+                <label for="mod-image-url">Image URL:</label>
+                <input type="text" id="mod-image-url" required>
+                <button type="submit">Submit Change</button>
+                <button type="button" id="delete-mod">Delete Mod</button>
+            </form>
+        </div>
+        <div class="tab-content" id="post-blog">
+            <form id="post-blog-form">
+                <h3>Add Blog Post</h3>
+                <label for="blog-title">Title:</label>
+                <input type="text" id="blog-title" required>
+                <small><label for="blog-date">Date:</label></small>
+                <input type="date" id="blog-date" required>
+                <label for="blog-content">Body:</label>
+                <textarea id="blog-content" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+        <div class="tab-content" id="user-management">
+            <h3>User Management</h3>
+            <div id="user-list"></div>
+            <form id="add-user-form">
+                <h4>Add New User</h4>
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" required>
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" required>
+                <button type="submit">Add User</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Exonix Mod Distribution Platform</p>
+    </footer>
+
+    <script src="newscript.js"></script>
+</body>
+</html>
