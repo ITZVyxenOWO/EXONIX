@@ -1,7 +1,6 @@
 // Initialize Supabase
 const supabaseUrl = "https://gxomwxrhuuhnxknqthgm.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4b213eHJodXVobnhrbnF0aGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwNDQ1MDUsImV4cCI6MjA1ODYyMDUwNX0.-QFrFrE5G1PpaETT9COwrq4YJNQSeZJPze5h_ay8iXg";  // Replace with actual Supabase key (should be kept secret)
-
+const supabaseKey = "YOUR_SUPABASE_KEY"; // Keep this key secure!
 
 document.addEventListener("DOMContentLoaded", async () => {
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const adminPfp = document.getElementById("admin-pfp");
     let isAdminLoggedIn = false;
 
-    // Fetch data from Supabase table
     async function fetchData(table) {
         const { data, error } = await supabase.from(table).select("*");
         if (error) {
@@ -61,40 +59,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = encoder.encode(password);
         const hashBuffer = await crypto.subtle.digest("SHA-256", data);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-    }
-
-    // Admin Login
-    const loginForm = document.getElementById("login-form");
-    loginForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        // Example: Hashing password and comparing with stored password in Supabase
-        const hashedPassword = await hashPassword(password);
-
-        const { data, error } = await supabase
-            .from("admins")
-            .select("*")
-            .eq("username", username)
-            .eq("password", hashedPassword);
-
-        if (error || !data.length) {
-            loginMessage.classList.remove("hidden");
-            loginMessage.textContent = "Invalid credentials!";
-        } else {
-            isAdminLoggedIn = true;
-            adminLogin.classList.add("hidden");
-            adminPanel.classList.remove("hidden");
-
-            // Admin profile data
-            adminUsername.textContent = data[0].username;
-            adminPfp.src = data[0].profile_picture_url;
-        }
-    });
-
-    // Call functions to render data
-    renderMods();
-    renderBlogs();
-});
+        return hashArray.map(byte => byte.toString(16).padStart(2,
