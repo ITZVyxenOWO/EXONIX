@@ -1,4 +1,4 @@
-// Supabase Integration Code Example with GitHub Secrets
+// Supabase Integration Code Example
 
 const { createClient } = supabase;
 const SUPABASE_URL = "https://gxomwxrhuuhnxknqthgm.supabase.co";
